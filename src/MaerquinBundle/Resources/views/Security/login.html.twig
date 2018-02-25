@@ -1,0 +1,57 @@
+{% extends '@Maerquin/base.html.twig' %}
+
+{% block content %}
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>MAERQUIN SPELER LOGIN</h1>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ path('fos_user_security_check') }}">
+            <div class="login">
+
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        {% if error %}
+                            <i class="fa fa-exclamation-triangle"></i>&nbsp;{{ error.message }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-3 text-right">
+                        <label for="username">Gebruikersnaam</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" id="username" name="_username" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 text-right">
+                        <label for="password">Wachtwoord</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" id="password" name="_password" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 text-right">
+                        <a href="#">Wachtwoord vergeten?</a>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <button class="btn btn-info float-right" type="submit">Login</button>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </div>
+        </form>
+
+    </div>
+{% endblock %}

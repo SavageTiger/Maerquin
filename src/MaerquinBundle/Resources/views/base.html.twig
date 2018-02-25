@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Maerquin rule management system{% endblock %}</title>
+    <link href="{{ asset('') }}assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ asset('') }}assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{{ asset('bundles/maerquin/css/main.css') }}" rel="stylesheet" />
+</head>
+
+<body>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+</body>

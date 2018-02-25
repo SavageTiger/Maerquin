@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    font-family: 'Roboto', sans-serif;
+
+    background-image: url('../images/Forest.jpg');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+a {
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+div.login .row {
+    margin: 0;
+    padding: 5px;
+}
+
+div.login-container, div.main-container h1 {
+    position: relative;
+    top: -20px;
+
+    color: white;
+
+    width: 100%;
+    text-align: center;
+
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+div.main-container h1.title {
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 25pt;
+}
+
+div.login, div.main {
+    color: white;
+    padding: 10px;
+    position: relative;
+
+    border-radius: 4px;
+
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+    background: rgba(0, 0, 0, 0.6);
+}
+
+div.login-container, div.main-container {
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+
+    left: 0;
+    right: 0;
+    top: 30%;
+    bottom: 50%;
+}
+
+div.main-container {
+    width: 80%;
+}
+
+div.login-container {
+    width: 35%;
+}
