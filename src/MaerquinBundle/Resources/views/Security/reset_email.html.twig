@@ -1,0 +1,24 @@
+<html>
+    <body style="font-fanily: Verdana; font-size: 11pt;">
+
+        <h1>Hallo {{ user.realname }},</h1>
+
+        <div>
+            Je hebt aangegeven dat je je wachtwoord of gebruikersnaam niet meer weet niet meer weet.
+        </div>
+
+        <div>&nbsp;</div>
+
+        <div>
+            Je gebruikersnaam is {{ user.username }}
+        </div>
+
+        <div>&nbsp;</div>
+
+        <div>
+            Om een nieuw wachtwoord in te stellen navigeer je met je browser naar deze link:<br />
+            <a href="{{ url }}?token={{ user.getConfirmationToken }}">{{ url }}?token={{ user.getConfirmationToken }}</a>
+        </div>
+
+    </body>
+</html>

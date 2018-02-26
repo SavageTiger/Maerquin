@@ -41,6 +41,13 @@ div.main-container h1.title {
     font-size: 25pt;
 }
 
+label {
+    /** I do not like the bootstrap default **/
+    position: relative;
+    top: 8px;
+}
+
+
 div.login, div.main {
     color: white;
     padding: 10px;

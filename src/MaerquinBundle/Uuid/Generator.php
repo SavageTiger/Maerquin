@@ -2,12 +2,11 @@
 
 namespace MaerquinBundle\Uuid;
 
-use Doctrine\ORM\EntityManager;
-use Doctrine\ORM\Id\AbstractIdGenerator;
+use FOS\UserBundle\Util\TokenGeneratorInterface;
 
-class Generator extends AbstractIdGenerator
+class Generator implements TokenGeneratorInterface
 {
-    public function generate(EntityManager $em, $entity)
+    public function generateToken()
     {
         return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
             mt_rand(0, 0xffff), mt_rand(0, 0xffff),

@@ -2,7 +2,7 @@
 
 namespace MaerquinBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
+use MaerquinBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +15,7 @@ class User extends BaseUser
      * @ORM\Id
      * @ORM\Column(type="guid")
      * @ORM\GeneratedValue(strategy="CUSTOM")
-     * @ORM\CustomIdGenerator(class="MaerquinBundle\Uuid\Generator")
+     * @ORM\CustomIdGenerator(class="MaerquinBundle\Uuid\DoctrineGenerator")
      */
     protected $id;
 
@@ -24,4 +24,9 @@ class User extends BaseUser
      * @ORM\JoinColumn(name="player_id", referencedColumnName="id")
      */
     protected $player;
+
+    /**
+     * @ORM\Column(type="string", length=128, nullable=false)
+     */
+    protected $realName = '';
 }

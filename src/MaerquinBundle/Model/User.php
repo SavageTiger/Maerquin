@@ -2,10 +2,26 @@
 
 namespace MaerquinBundle\Model;
 
-use MaerquinBundle\Entity\User as EntityUser;
+use FOS\UserBundle\Model\User as BaseUser;
 
-class User extends EntityUser implements UserInterface
+class User extends BaseUser implements UserInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function setRealName($realName)
+    {
+        $this->realName = $realName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRealName()
+    {
+        return $this->realName;
+    }
+
     /**
      * {@inheritdoc}
      */

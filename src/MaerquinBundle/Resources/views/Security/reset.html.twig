@@ -1,0 +1,50 @@
+{% extends '@Maerquin/base.html.twig' %}
+
+{% block content %}
+    <div class="login-container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>MAERQUIN SPELER LOGIN</h1>
+            </div>
+        </div>
+
+        <form method="POST" action="{{ path('reset') }}">
+            <div class="login">
+
+                <div class="row mt-4">
+                    <div class="col-md-12 text-center">
+                        {% if success == false and error == '' %}
+                            Je ontvangt van ons een e-mail met daarin je gebruikersnaam en een linkje om je wachtwoord opnieuw in te stellen.
+                        {% endif %}
+
+                        {% if success %}
+                            <i class="fa fa-info"></i>&nbsp;Kijk maar...
+                        {% endif %}
+
+                        {% if error %}
+                            <i class="fa fa-exclamation-triangle"></i>&nbsp{{ error }}
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-3 text-right">
+                        <label for="email">Uw emailadres</label>
+                    </div>
+                    <div class="col-md-9">
+                        <input type="text" id="email" name="_email" class="form-control" />
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <button class="btn btn-info float-right" type="submit">Verstuur</button>
+                    </div>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </div>
+        </form>
+
+    </div>
+{% endblock %}
