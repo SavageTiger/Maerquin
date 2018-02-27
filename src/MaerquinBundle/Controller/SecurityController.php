@@ -26,6 +26,7 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
     {
         $manager = $this->get('fos_user.user_manager');
         $user    = $manager->findUserByConfirmationToken($token);
+        $error   = '';
         $success = false;
 
         if ($user === null) {
@@ -37,7 +38,21 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
             throw new \Exception('Password reset token has expired');
         }
 
+        if ($request->getMethod() === 'POST') {
+            if ($request->get('_password_primary') === $request->get('_password_secondary')) {
+                $user->setPlainPassword($request->get('_password_primary'));
+                $user->setConfirmationToken(null);
+
+                $manager->updateUser($user);
+
+                $success = true;
+            } else {
+                $error = 'PASSWORD_MISMATCH';
+            }
+        }
+
         return $this->render('@Maerquin/Security/reset_password.html.twig', [
+            'error'   => $error,
             'success' => $success
         ]);
     }
