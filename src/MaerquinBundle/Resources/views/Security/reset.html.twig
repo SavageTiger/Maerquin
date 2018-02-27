@@ -11,39 +11,44 @@
         <form method="POST" action="{{ path('reset') }}">
             <div class="login">
 
-                <div class="row mt-4">
-                    <div class="col-md-12 text-center">
-                        {% if success == false and error == '' %}
-                            Je ontvangt van ons een e-mail met daarin je gebruikersnaam en een linkje om je wachtwoord opnieuw in te stellen.
-                        {% endif %}
+                {% if success == true %}
+                    <h2>Wachtwoord reset email verzonden,</h2>
+                    <div>Indien {{ user.email }} bij je maerquin-account hoort dan kun je met de link in de e-mail je nieuwe wachtwoord instellen.</div>
+                {% else %}
+                    <div class="row mt-4">
+                        <div class="col-md-12 text-center">
+                            {% if success == false and error == '' %}
+                                Je ontvangt van ons een e-mail met daarin je gebruikersnaam en een linkje om je wachtwoord opnieuw in te stellen.
+                            {% endif %}
 
-                        {% if success %}
-                            <i class="fa fa-info"></i>&nbsp;Kijk maar...
-                        {% endif %}
+                            {% if success %}
+                                <i class="fa fa-info"></i>&nbsp;Kijk maar...
+                            {% endif %}
 
-                        {% if error %}
-                            <i class="fa fa-exclamation-triangle"></i>&nbsp{{ error }}
-                        {% endif %}
+                            {% if error %}
+                                <i class="fa fa-exclamation-triangle"></i>&nbsp{{ error }}
+                            {% endif %}
+                        </div>
                     </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-3 text-right">
+                            <label for="email">Uw emailadres</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="email" name="_email" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <button class="btn btn-info float-right" type="submit">Verstuur</button>
+                        </div>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-3 text-right">
-                        <label for="email">Uw emailadres</label>
-                    </div>
-                    <div class="col-md-9">
-                        <input type="text" id="email" name="_email" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="row mt-4">
-                    <div class="col-md-12">
-                        <button class="btn btn-info float-right" type="submit">Verstuur</button>
-                    </div>
-                </div>
-
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-            </div>
+            {% endif %}
         </form>
 
     </div>

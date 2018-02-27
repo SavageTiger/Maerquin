@@ -18,10 +18,36 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
     }
 
     /**
+     * @Route("/reset_password/{token}", name="reset_token")
+     *
+     * @throws \Exception
+     */
+    public function resetPasswordAction(Request $request, $token)
+    {
+        $manager = $this->get('fos_user.user_manager');
+        $user    = $manager->findUserByConfirmationToken($token);
+        $success = false;
+
+        if ($user === null) {
+            throw new \Exception('Invalid token');
+        }
+
+        // Reset token is valid for 24 hours
+        if ($user->isPasswordRequestNonExpired(86400) === false) {
+            throw new \Exception('Password reset token has expired');
+        }
+
+        return $this->render('@Maerquin/Security/reset_password.html.twig', [
+            'success' => $success
+        ]);
+    }
+
+    /**
      * @Route("/reset", name="reset")
      */
     public function forgotLoginAction(Request $request)
     {
+        $user    = null;
         $error   = '';
         $success = false;
 
@@ -36,12 +62,18 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
                 $error = 'NO_USER';
             } else {
                 $user->setConfirmationToken($tokenGenerator->generateToken());
+                $user->setPasswordRequestedAt(new \DateTime());
+
+                $manager->updateUser($user);
 
                 $mailer->send($this->getForgotMessage($user));
+
+                $success = true;
             }
         }
 
         return $this->render('@Maerquin/Security/reset.html.twig', [
+            'user'    => $user,
             'error'   => $error,
             'success' => $success
         ]);
@@ -58,7 +90,7 @@ class SecurityController extends \FOS\UserBundle\Controller\SecurityController
         $body = $this->get('templating')->render('@Maerquin/Security/reset_email.html.twig', [
             'user' => $user,
             'url' => $this->get('router')->generate(
-                'reset', [], UrlGeneratorInterface::ABSOLUTE_URL
+                'reset_token', ['token' => $user->getConfirmationToken()], UrlGeneratorInterface::ABSOLUTE_URL
             ),
         ]);
 
