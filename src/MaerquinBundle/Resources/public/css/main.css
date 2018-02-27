@@ -18,6 +18,34 @@ a:hover {
     color: white;
 }
 
+nav.navbar {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+    background: rgba(0, 0, 0, 0.8);
+}
+
+nav.navbar .navbar-spacer {
+    width: 40px;
+}
+
+nav.navbar .dropdown-menu {
+    position: relative;
+    top: 46px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+    background: rgba(0, 0, 0, 0.7);
+
+    border-radius: 0;
+}
+
+nav.navbar .dropdown-menu .dropdown-item {
+    color: white;
+}
+
+nav.navbar .dropdown-menu .dropdown-item:hover {
+    background: transparent;
+}
+
 div.login .row {
     margin: 0;
     padding: 5px;
@@ -57,7 +85,7 @@ div.login, div.main {
 
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
 
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.7);
 }
 
 div.login-container, div.main-container {

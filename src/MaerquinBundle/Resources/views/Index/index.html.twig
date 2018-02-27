@@ -1,5 +1,43 @@
 {% extends '@Maerquin/base.html.twig' %}
 
+{% block menu %}
+
+    <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-user"></i>&nbsp;Spelers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-address-card"></i>&nbsp;Personages</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fa fa-map-signs"></i><i class="fab fa-d-and-d"></i>&nbsp;Evenmenten</a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-magic"></i>&nbsp;Vaardigheden
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Lijst</a>
+                <a class="dropdown-item" href="#">Scholen</a>
+            </div>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-diamond"></i>&nbsp;Componenten
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Lijst</a>
+                <a class="dropdown-item" href="#">Scholen</a>
+                <a class="dropdown-item" href="#">Scholen</a>
+            </div>
+        </li>
+    </ul>
+
+{% endblock %}
+
 {% block content %}
 
 

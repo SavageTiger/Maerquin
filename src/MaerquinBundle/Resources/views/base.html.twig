@@ -6,9 +6,19 @@
     <link href="{{ asset('') }}assets/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
     <link href="{{ asset('') }}assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="{{ asset('bundles/maerquin/css/main.css') }}" rel="stylesheet" />
+
+    <script src="{{ asset('') }}assets/jquery/dist/jquery.min.js"></script>
+    <script src="{{ asset('') }}assets/bootstrap/dist/js/bootstrap.min.js"></script>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="{{ path('index') }}">Maerquin Database</a>
+        <div class="navbar-spacer"></div>
+        {% block menu %}{% endblock %}
+    </nav>
+
+
     <div>
         {% block content %}{% endblock %}
     </div>
