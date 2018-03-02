@@ -7,11 +7,19 @@
     <link href="{{ asset('') }}assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="{{ asset('bundles/maerquin/css/main.css') }}" rel="stylesheet" />
 
+    <script>
+        var ENV = {};
+
+        ENV.apiURL = '{{ path('api_base_url') }}/';
+    </script>
+
     <script src="{{ asset('') }}assets/jquery/dist/jquery.min.js"></script>
     <script src="{{ asset('') }}assets/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('') }}assets/angular/angular.min.js"></script>
+    <script src="{{ asset('') }}bundles/maerquin/js/maerquinApp.js"></script>
 </head>
 
-<body>
+<body ng-app="maerquinApp">
     <nav class="navbar navbar-expand-lg">
         <a class="navbar-brand" href="{{ path('index') }}">Maerquin Database</a>
         <div class="navbar-spacer"></div>

@@ -2,10 +2,10 @@
 
 {% block menu %}
 
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto" ng-controller="menuCtrl">
 
         <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-user"></i>&nbsp;Spelers</a>
+            <a class="nav-link" ng-click="list('player', 'Spelers')" href="#"><i class="fa fa-user"></i>&nbsp;Spelers</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" href="#"><i class="fa fa-address-card"></i>&nbsp;Personages</a>
@@ -43,13 +43,15 @@
 
     <div class="main-container">
         <div class="row">
-            <div class="col-md-12"><h1 class="title">Maerquin speler en spelregel systeem</h1></div>
+            <div class="col-md-12"><h1 class="title">{% verbatim %}{{ label }}{% endverbatim %}</h1></div>
         </div>
 
-        <div class="main">
+        <div class="main" ng-if="viewType" ng-controller="viewCtrl">
 
             <div class="row">
-                <div class="col-md-12"></div>
+                {% verbatim %}
+                <div class="col-md-12">{{ viewType }}</div>
+                {% endverbatim %}
             </div>
 
         </div>

@@ -52,7 +52,8 @@ class Character
     protected $birthplace;
 
     /**
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="characters")
+     * @ORM\ManyToOne(targetEntity="Character", inversedBy="player")
+     * @ORM\JoinColumn(name="player_id", referencedColumnName="id", nullable=true)
      */
     protected $player;
 

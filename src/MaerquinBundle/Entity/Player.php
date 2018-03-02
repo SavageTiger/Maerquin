@@ -3,6 +3,7 @@
 namespace MaerquinBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity()
@@ -13,17 +14,20 @@ class Player
     /**
      * @ORM\Id
      * @ORM\Column(type="guid")
+     *
+     * @Serializer\Groups({"list"})
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string", length=128, nullable=false)
+     *
+     * @Serializer\Groups({"list"})
      */
     protected $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Character", inversedBy="player")
-     * @ORM\JoinColumn(name="character_id", referencedColumnName="id", nullable=true)
+     * @ORM\OneToMany(targetEntity="Player", mappedBy="characters")
      */
     protected $characters;
 }

@@ -6,8 +6,9 @@ use MaerquinBundle\Model\UserInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use FOS\UserBundle\Controller\SecurityController as BaseSecurityController;
 
-class SecurityController extends \FOS\UserBundle\Controller\SecurityController
+class SecurityController extends BaseSecurityController
 {
     /**
      * @Route("/login", name="login")

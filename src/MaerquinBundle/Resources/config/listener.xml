@@ -5,7 +5,8 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="MaerquinBundle\EventListener\ExceptionListener">
+        <!-- Listeners -->
+        <service id="maerquin.exception_listener" class="MaerquinBundle\EventListener\ExceptionListener">
             <argument>%kernel.environment%</argument>
             <tag name="kernel.event_listener" event="kernel.exception" />
         </service>
