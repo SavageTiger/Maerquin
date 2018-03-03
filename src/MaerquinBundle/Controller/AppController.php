@@ -6,13 +6,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class IndexController extends Controller
+class AppController extends Controller
 {
     /**
-     * @Route("/", name="index")
+     * @Route("/", name="app")
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        return $this->render('@Maerquin/Index/index.html.twig');
+        return $this->render('@Maerquin/App/app.html.twig');
     }
 }

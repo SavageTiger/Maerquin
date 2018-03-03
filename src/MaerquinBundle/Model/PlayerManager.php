@@ -21,7 +21,7 @@ class PlayerManager
      */
     public function getAll()
     {
-        return $this->em->getRepository('MaerquinBundle:Player')->findAll();
+        return $this->em->getRepository('MaerquinBundle:Player')->findBy([], ['name' => 'asc']);
     }
 
 }

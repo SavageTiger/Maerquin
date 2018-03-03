@@ -47,13 +47,9 @@
         </div>
 
         <div class="main" ng-if="viewType" ng-controller="viewCtrl">
-
-            <div class="row">
-                {% verbatim %}
-                <div class="col-md-12">{{ viewType }}</div>
-                {% endverbatim %}
+            <div class="view" ng-auto-size="true" ng-init="autoHeight = '5px'" ng-style="{ height: autoHeight }">
+                {% include '@Maerquin/App/list.html.twig' %}
             </div>
-
         </div>
 
     </div>

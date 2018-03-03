@@ -1,0 +1,20 @@
+
+{% verbatim %}
+
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="model-list" ng-style="{ height: autoHeight }">
+                <div ng-repeat="model in modelList" class="row list-item" ng-class-odd="'odd'">
+                    <div class="col-md-12">{{ model.name }}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="col-md-6">
+                <div class="card bg-faded">Recored view...</div>
+            </div>
+        </div>
+    </div>
+{% endverbatim %}

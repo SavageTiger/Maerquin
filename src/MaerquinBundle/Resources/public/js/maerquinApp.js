@@ -21,11 +21,28 @@ maerquinApp.controller("viewCtrl", function ($scope, $http) {
 
         if (newVal === 'list') {
             getList($scope.modelType, function(response) {
-                console.log(response.data);
+                $scope.modelList =  response.data;
             })
         }
 
     });
 
+});
 
+maerquinApp.directive('ngAutoSize', function() {
+    return {
+        link: function(scope, element, attrs) {
+            var dom    = element.get(0).ownerDocument;
+                window = dom.defaultView || dom.parentWindow;
+
+            angular.element(window).off('resize');
+            angular.element(window).on('resize', function () {
+                scope.autoHeight = (window.innerHeight - 190) + 'px';
+
+                scope.$digest();
+            });
+            angular.element(window).trigger('resize');
+            console.log(scope.autoHeight);
+        }
+    };
 });
