@@ -6,14 +6,14 @@
 
             <div class="model-list" ng-style="{ height: autoHeight }">
                 <div ng-repeat="model in modelList" class="row list-item" ng-class-odd="'odd'">
-                    <div class="col-md-12">{{ model.name }}</div>
+                    <div class="col-md-12" ng-click="viewItem(model.id)">{{ model.name }}</div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-6">
-            <div class="col-md-6">
-                <div class="card bg-faded">Recored view...</div>
+            <div class="record">
+                <div rn-compile="recordView"></div>
             </div>
         </div>
     </div>

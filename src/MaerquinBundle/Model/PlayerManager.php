@@ -21,7 +21,25 @@ class PlayerManager
      */
     public function getAll()
     {
-        return $this->em->getRepository('MaerquinBundle:Player')->findBy([], ['name' => 'asc']);
+        return $this->em->getRepository('MaerquinBundle:Player')->findBy([], [ 'name' => 'asc' ]);
     }
 
+    /**
+     * Get the specified player
+     *
+     * @param string $itemId
+     * @return Player
+     */
+    public function getItem($itemId)
+    {
+        return $this->em->getRepository('MaerquinBundle:Player')->findOneBy([ 'id' => $itemId ]);
+    }
+
+    /**
+     * @return string
+     */
+    public function getViewTemplate()
+    {
+        return '@Maerquin/Players/view.html.twig';
+    }
 }

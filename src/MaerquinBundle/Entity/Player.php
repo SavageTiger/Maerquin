@@ -4,12 +4,13 @@ namespace MaerquinBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
+use MaerquinBundle\Model\Player as BasePlayer;
 
 /**
  * @ORM\Entity()
  * @ORM\Table(name="maerquin_player")
  */
-class Player
+class Player extends BasePlayer
 {
     /**
      * @ORM\Id
@@ -27,7 +28,7 @@ class Player
     protected $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="Player", mappedBy="characters")
+     * @ORM\OneToMany(targetEntity="Character", mappedBy="player")
      */
     protected $characters;
 }

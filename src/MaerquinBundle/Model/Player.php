@@ -2,9 +2,34 @@
 
 namespace MaerquinBundle\Model;
 
-use MaerquinBundle\Entity\Player as EntityPlayer;
+use Doctrine\Common\Collections\ArrayCollection;
 
-class Player extends EntityPlayer
+class Player
 {
+    protected $name;
+    protected $characters;
 
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCharacters()
+    {
+        return $this->characters;
+    }
 }

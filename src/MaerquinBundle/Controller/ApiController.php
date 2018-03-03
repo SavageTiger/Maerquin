@@ -32,4 +32,17 @@ class ApiController extends Controller
             json_decode($serializer->serialize($manager->getAll(), 'json', $context))
         );
     }
+
+    /**
+     * @Route("/api/{modelName}/{itemId}/view", name="api_item_view")
+     */
+    public function itemViewAction($modelName, $itemId)
+    {
+        $manager = $this->get('maerquin.' . $modelName . '.manager');
+
+        return $this->render(
+            $manager->getViewTemplate(),
+            ['record' => $manager->getItem($itemId)]
+        );
+    }
 }

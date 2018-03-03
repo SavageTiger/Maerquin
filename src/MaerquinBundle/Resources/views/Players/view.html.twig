@@ -1,0 +1,58 @@
+
+<div class="row">
+    <div class="col-md-6 label">Naam</div>
+    <div class="col-md-6">{{ record.name }}</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 label">Geboortedatum</div>
+    <div class="col-md-6"></div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 label">Adres</div>
+    <div class="col-md-6">...</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 label">Postcode en woonplaats</div>
+    <div class="col-md-6">...</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 label">Email</div>
+    <div class="col-md-6">...</div>
+</div>
+
+<div class="row">
+    <div class="col-md-6 label">Telefoonnummer</div>
+    <div class="col-md-6">...</div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6 label">Gebruikersnaam</div>
+    <div class="col-md-6">...</div>
+</div>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-6 label">Characters</div>
+    <div class="col-md-6">
+
+        {% if record.characters.count == 0  %}
+            Geen characters geregistreerd.
+        {% else %}
+
+            {% for character in record.characters %}
+                <div class="row">
+                    {{ character.name }}
+                </div>
+            {% endfor %}
+
+        {% endif %}
+
+    </div>
+</div>

@@ -135,3 +135,16 @@ div.model-list .list-item.odd {
     padding: 3px;
     background: rgba(37, 37, 37, 0.5);
 }
+
+div.record {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+div.record .hr {
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+div.record .label {
+    font-weight: bold;
+}

@@ -13,16 +13,22 @@ maerquinApp.controller("menuCtrl", function ($scope, $rootScope) {
 
 maerquinApp.controller("viewCtrl", function ($scope, $http) {
 
-    var getList = function (modelType, callback) {
-        $http.get(window.ENV.apiURL + modelType + '/list').then(callback);
+    var getList = function () {
+        $http.get(window.ENV.apiURL + $scope.modelType + '/list').then(function (response) {
+            $scope.modelList = response.data;
+        });
+    };
+
+    $scope.viewItem = function(itemId) {
+        $http.get(window.ENV.apiURL + $scope.modelType + '/' + itemId + '/view').then(function (response) {
+            $scope.recordView = response.data;
+        });
     };
 
     $scope.$watch('viewType', function (oldVal, newVal) {
 
         if (newVal === 'list') {
-            getList($scope.modelType, function(response) {
-                $scope.modelList =  response.data;
-            })
+            getList();
         }
 
     });
@@ -36,13 +42,29 @@ maerquinApp.directive('ngAutoSize', function() {
                 window = dom.defaultView || dom.parentWindow;
 
             angular.element(window).off('resize');
-            angular.element(window).on('resize', function () {
+            angular.element(window).on('resize', function (e) {
                 scope.autoHeight = (window.innerHeight - 190) + 'px';
 
-                scope.$digest();
+                if (!e.isTrigger) {
+                    scope.$digest();
+                }
             });
             angular.element(window).trigger('resize');
-            console.log(scope.autoHeight);
         }
     };
+});
+
+maerquinApp.directive('rnCompile', function($compile) {
+    return function(scope, element, attrs) {
+        scope.$watch(
+            function (scope) {
+                return scope.$eval(attrs.rnCompile);
+            },
+            function (value) {
+                element.html(value);
+
+                $compile(element.contents())(scope);
+            }
+        );
+    }
 });
