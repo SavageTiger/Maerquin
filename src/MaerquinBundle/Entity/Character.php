@@ -4,11 +4,13 @@ namespace MaerquinBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use MaerquinBundle\Model\Character as BaseCharacter;
+
 /**
  * @ORM\Entity()
  * @ORM\Table(name="maerquin_character")
  */
-class Character
+class Character extends BaseCharacter
 {
     /**
      * @ORM\Id
