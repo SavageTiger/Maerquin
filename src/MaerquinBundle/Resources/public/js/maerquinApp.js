@@ -21,6 +21,7 @@ maerquinApp.controller("viewCtrl", function ($scope, $http) {
 
     $scope.viewItem = function(itemId) {
         $http.get(window.ENV.apiURL + $scope.modelType + '/' + itemId + '/view').then(function (response) {
+            $scope.recordId   = itemId;
             $scope.recordView = response.data;
         });
     };

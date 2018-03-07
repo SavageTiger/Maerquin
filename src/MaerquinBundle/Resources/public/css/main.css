@@ -75,6 +75,19 @@ label {
     top: 8px;
 }
 
+div.toolbar a[disabled] {
+    color: #6d6d6d;
+}
+
+div.toolbar a, div.toolbar .form-group {
+    display: inline-block;
+    padding-bottom: 15px;
+}
+
+div.toolbar {
+    margin: 5px;
+    border-bottom: 1px solid white;
+}
 
 div.login, div.main {
     color: white;
@@ -124,6 +137,11 @@ div.model-list {
 div.model-list .list-item:hover, div.model-list .list-item.odd:hover {
     cursor: pointer;
     background: rgba(70, 70, 70, 0.5);
+}
+
+div.model-list .list-item.active {
+    background: rgb(67, 103, 163) !important;
+    color: black;
 }
 
 div.model-list .list-item {

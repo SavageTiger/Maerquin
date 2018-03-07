@@ -2,17 +2,33 @@
 {% verbatim %}
 
     <div class="row">
+        <div class="col-md-12 toolbar">
+            <a class="nav-link" href="#"><i class="fa fa-plus"></i>&nbsp;Nieuwe aanmaken</a>
+            <a class="nav-link" ng-disabled="!recordView" href="#"><i class="fa fa-pencil"></i>&nbsp;Bewerken</a>
+
+            <div class="form-group float-right mr-3 mb-0">
+                <input type="search" class="form-control" id="search" ng-model="modelSearch" placeholder="Zoeken...">
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-6">
 
             <div class="model-list" ng-style="{ height: autoHeight }">
-                <div ng-repeat="model in modelList" class="row list-item" ng-class-odd="'odd'">
-                    <div class="col-md-12" ng-click="viewItem(model.id)">{{ model.name }}</div>
+                <div
+                    class="row list-item"
+                    ng-repeat="model in modelList|filter:modelSearch"
+                    ng-class="{ 'active': model.id == recordId }"
+                    ng-class-odd="'odd'"
+                    ng-click="viewItem(model.id)">
+                    <div class="col-md-12">{{ model.name }}</div>
                 </div>
             </div>
+
         </div>
 
         <div class="col-md-6">
-            <div class="record">
+            <div class="record mt-2" ng-if="recordView">
                 <div rn-compile="recordView"></div>
             </div>
         </div>
